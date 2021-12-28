@@ -1,0 +1,11 @@
+SELECT  DISTINCT ?s ?p ?o
+WHERE {
+?s ?p ?o.
+?s rdf:type dbo:Person. 
+FILTER(!isLiteral(?o) || langMatches(lang(?o), "EN") || lang(?o)="").
+FILTER(?s = dbr:Patsy_Reddy || ?s = dbr:Dalton_Tagelagi || ?s = dbr:).
+VALUES ?p { 
+      rdfs:label dbo:birthPlace dbp:birthPlace dbo:child dbo:abstract dbp:party dbo:party dbp:birthDate dbo:birthDate dbo:spouse dbp:spouse dbo:nationality dbp:nationality dbo:thumbnail dbo:deathDate dbo:deathPlace
+}.
+}
+ORDER BY ASC (?s)
