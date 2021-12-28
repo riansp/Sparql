@@ -1,0 +1,13 @@
+SELECT  DISTINCT ?s ?p ?place ?lat ?long ?o
+WHERE {
+?s ?p ?o.
+?s rdf:type dbo:Event.
+FILTER(!isLiteral(?o) || langMatches(lang(?o), "EN") || lang(?o)="").
+FILTER(?s = dbr:Iran–Iraq_War).
+VALUES ?p { 
+      rdfs:label dbo:abstrac dbo:thumbnail dbo:causalties dbo:date dct:subject rdfs:comment
+}.
+OPTIONAL {?s dbo:place ?place.
+                    ?place geo:lat ?lat.
+                    ?place geo:long ?long}.
+}.
